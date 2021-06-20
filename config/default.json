@@ -34,5 +34,9 @@
   "mail_smtp_require_tls": true,
   "mail_smtp_user": "your.smtp.user",
   "mail_smtp_pass": "your.secret.smtp.password",
-  "spacedeck": {}
+  "spacedeck": {
+    "videoKit": {
+      "apiKey": "2l1Z2B1S2zy2B78352D1Y2F2u3F2v"
+    }
+  }
 }

@@ -3,7 +3,7 @@ const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 
-gulp.task('styles', function(done) {
+const compileStyles = function(done) {
   gulp.src('styles/**/*.scss')
     .pipe(sass({
         errLogToConsole: true
@@ -12,4 +12,10 @@ gulp.task('styles', function(done) {
     .pipe(gulp.dest('./public/stylesheets/'))
     .pipe(concat('style.css'))
   done()
+};
+
+gulp.task('styles', compileStyles);
+
+gulp.task('styles:watch', function() {
+  gulp.watch(['styles/**/*.scss'], compileStyles)
 });

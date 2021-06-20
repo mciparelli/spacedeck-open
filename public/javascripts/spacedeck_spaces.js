@@ -99,6 +99,23 @@ var SpacedeckSpaces = {
         }
       }.bind(this), {value: dft || "Guest "+parseInt(10000*Math.random()), ok: __("ok"), cancel: __("cancel")});
     },
+
+    load_video_kit: function () {
+      if (!this.active_space) return;
+      const isHost = this.active_space_role === 'admin';
+      let videoOptions = {
+        apiKey: ENV.options.videoKit.apiKey,
+        callId: this.active_space._id,
+        container: '#video-container',
+        user: {
+          role: isHost ? 'host' : 'participant' 
+        }
+      };
+      if (this.user && isHost) {
+        videoOptions.user.name = `${this.user.nickname} (Presenter)`;
+      }
+      VideoKit(videoOptions);
+    },
     
     load_space: function(space_id, on_success, on_error) {
       this.folder_spaces_filter="";
@@ -256,6 +273,8 @@ var SpacedeckSpaces = {
               window.setTimeout(function() {
                 this.zoom_to_fit();
               }.bind(this),10);
+
+              this.load_video_kit();
 
               if (on_success) {
                 on_success();

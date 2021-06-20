@@ -61,8 +61,13 @@ function boot_spacedeck() {
       event.preventDefault();
       load_space(encodeURIComponent(this.classroom_code), (space) => {
         this.redirect_to(`/spaces/${space._id}`);
-      },() => {
-        this.go_to_space_error = "Classroom not found.";
+      }, error => {
+        const {error: errorMessage} = JSON.parse(error.response);
+        if (errorMessage === 'auth_required') {
+          this.go_to_space_error = "You need to login to view this space.";
+        } else {
+          this.go_to_space_error = "Classroom not found.";
+        }
       })
     },
 
@@ -185,4 +190,5 @@ document.addEventListener("DOMContentLoaded",function() {
   
   FastClick.attach(document.body);
   boot_spacedeck();
+
 });
