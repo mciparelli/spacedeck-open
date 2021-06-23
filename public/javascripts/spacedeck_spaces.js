@@ -270,17 +270,18 @@ var SpacedeckSpaces = {
 
               this.discover_zones();
 
+              this.active_space_loaded = true;
+
               window.setTimeout(function() {
+                this.load_video_kit();
                 this.zoom_to_fit();
               }.bind(this),10);
 
-              this.load_video_kit();
 
               if (on_success) {
                 on_success();
               }
 
-              this.active_space_loaded = true;
               this.extract_properties_from_selection(); // populates zones etc
               
               load_comments(space._id, function(messages) {
