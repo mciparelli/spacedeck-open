@@ -331,6 +331,7 @@
 	"tool_delete_space": "Really delete \"%s\"?",
 	"enter_code": "Enter code",
 	"new_space_code": "New code for Space",
+	"enter_classroom_username": "Your name",
 	"enter_classroom_code": "Enter classroom code",
 	"enter_classroom_button_text": "Enter"
 }

@@ -16,6 +16,11 @@
         <h4>Enter classroom</h4>
         <div class="tight">
           <div class="form-group">
+            <input class="input" type="text" id="classroom-username" v-model="classroom_username" placeholder="<%=__('enter_classroom_username')%>">
+          </div>
+        </div>
+        <div class="tight">
+          <div class="form-group">
             <input class="input" type="text" id="classroom-code" v-model="classroom_code" v-on:blur="clear_space_error" v-on:input="clear_space_error" placeholder="<%=__('enter_classroom_code')%>">
           </div>
         </div>

@@ -113,6 +113,12 @@ var SpacedeckSpaces = {
       };
       if (this.user && isHost) {
         videoOptions.user.name = `${this.user.nickname} (Presenter)`;
+      } else {
+        const params = new URLSearchParams(location.search)
+        const username = params.get('username');
+        if (username) {
+          videoOptions.user.name = username;
+        }
       }
       VideoKit(videoOptions);
     },

@@ -32,6 +32,7 @@ function boot_spacedeck() {
 
     global_spinner: false,
     classroom_code: "",
+    classroom_username: "",
     go_to_space_error: null
   };
 
@@ -60,7 +61,7 @@ function boot_spacedeck() {
     go_to_space: function(event) {
       event.preventDefault();
       load_space(encodeURIComponent(this.classroom_code), (space) => {
-        this.redirect_to(`/spaces/${space._id}`);
+        this.redirect_to(`/spaces/${space._id}?username=${encodeURIComponent(this.classroom_username)}`);
       }, error => {
         const {error: errorMessage} = JSON.parse(error.response);
         if (errorMessage === 'auth_required') {
